@@ -4,21 +4,14 @@ import { MatDialog } from '@angular/material/dialog';
 
 import { PreventiveModalComponent } from './preventive-modal/preventive-modal.component';
 
+import { EquipmentService } from '@services';
+
 export interface TableElement {
-  equipment: string;
+  equipament: string;
   serialNumber: string;
   sector: string;
   nextPreventive: Date;
 }
-
-const TABLE_DATA: TableElement[] = [
-  {
-    equipment: 'Esfigmomanometro Aneroide Manual',
-    serialNumber: '3675328',
-    sector: 'UTI Adulta',
-    nextPreventive: new Date()
-  }
-];
 
 @Component({
   selector: 'app-preventive',
@@ -27,18 +20,16 @@ const TABLE_DATA: TableElement[] = [
 })
 export class PreventiveComponent {
   displayedColumns: string[] = [
-    'equipment',
+    'equipament',
     'serialNumber',
     'sector',
     'nextPreventive'
   ];
-  dataSource = TABLE_DATA;
+  dataSource;
 
   animal: string;
   name: string;
-
-  constructor(public dialog: MatDialog) {}
-
+  
   openDialog(el) {
     const dialogRef = this.dialog.open(PreventiveModalComponent, {
       width: '320px',
@@ -50,4 +41,13 @@ export class PreventiveComponent {
       this.animal = result;
     });
   }
+  
+  ngOnInit() {
+    this.equipmentService.getPreventives(1).subscribe((res) => {
+      console.log(res);
+      this.dataSource = res as any;
+    });
+  }
+
+  constructor(private equipmentService: EquipmentService, public dialog: MatDialog) { }
 }

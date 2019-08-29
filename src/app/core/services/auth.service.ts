@@ -7,8 +7,8 @@ import { environment } from '@env/environment';
   providedIn: 'root'
 })
 export class AuthService {
-  public login() {
-    return this.httpClient.post(`${environment.backendURL}employee/login`, { email: 'mariaeduardaf@gmail.com', senha: '0123456789' });
+  public login(email: string, password: string) {
+    return this.httpClient.post(`${environment.backendURL}employee/login`, { email: email, senha: password });
   }
 
   constructor(private httpClient: HttpClient) { }

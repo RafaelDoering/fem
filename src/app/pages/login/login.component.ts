@@ -16,11 +16,9 @@ export class LoginComponent {
   });
 
   public onSubmit() {
-    this.authService.login().subscribe((res) => {
-      console.log(res);
+    this.authService.login(this.loginForm.value.email, this.loginForm.value.password).subscribe((res) => {
+      this.router.navigateByUrl('/equipment/list');
     });
-
-    this.router.navigateByUrl('/');
   }
 
   constructor(

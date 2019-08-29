@@ -1,29 +1,29 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
+import { EquipmentService } from '@services';
 
 export interface TableElement {
-  equipment: string;
+  equipament: string;
   serialNumber: string;
   sector: string;
   defect: string;
   dateDefect: Date;
 }
 
-const TABLE_DATA: TableElement[] = [
-  {
-    equipment: 'Esfigmomanometro Aneroide Manual',
-    serialNumber: '3675328',
-    sector: 'UTI Adulta',
-    defect: 'Falha Intrésica',
-    dateDefect: new Date()
-  },
-];
-
 @Component({
   selector: 'app-defects',
   templateUrl: './defects.component.html',
   styleUrls: ['./defects.component.scss']
 })
-export class DefectsComponent {
-  displayedColumns: string[] = ['equipment', 'serialNumber', 'sector', 'defect', 'dateDefect'];
-  dataSource = TABLE_DATA;
+export class DefectsComponent implements OnInit {
+  displayedColumns: string[] = ['equipament', 'serialNumber', 'sector', 'defect', 'dateDefect'];
+  dataSource;
+
+  ngOnInit() {
+    this.equipmentService.getDefects(1).subscribe((res) => {
+      this.dataSource = res as any;
+    });
+  }
+
+  constructor(private equipmentService: EquipmentService) { }
 }

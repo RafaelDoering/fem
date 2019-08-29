@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+import { EquipmentService } from '@services';
+
 export interface TableElement {
   id: number;
   name: string;
@@ -12,21 +14,6 @@ export interface TableElement {
   criticality: string;
   nextPreventive: Date;
 }
-
-const TABLE_DATA: TableElement[] = [
-  {
-    id: 3,
-    name: 'Esfigmomanometro Aneroide Manual',
-    producer: 'PREMIUM',
-    model: 'Manual',
-    anvisaNumber: '80275310022',
-    function: 'Diagnóstico',
-    serialNumber: '3675328',
-    importance: 'C',
-    criticality: 'Baixa',
-    nextPreventive: new Date()
-  }
-];
 
 @Component({
   selector: 'app-list-equipments',
@@ -45,5 +32,13 @@ export class ListEquipmentsComponent {
     'criticality',
     'nextPreventive'
   ];
-  dataSource = TABLE_DATA;
+  dataSource;
+
+  ngOnInit() {
+    this.equipmentService.getEquipment(1).subscribe((res) => {
+      this.dataSource = res as any;
+    });
+  }
+
+  constructor(private equipmentService: EquipmentService) { }
 }
