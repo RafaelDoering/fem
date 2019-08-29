@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 
+import { EquipmentService } from '@services';
+
 @Component({
   selector: 'app-register-equipment',
   templateUrl: './register-equipment.component.html',
@@ -17,9 +19,31 @@ export class RegisterEquipmentComponent {
     importance: new FormControl(''),
     serialNumber: new FormControl(''),
     patternEquipment: new FormControl(''),
-    sector: new FormControl(''),
+    sector: new FormControl('')
   });
 
   public onSubmit() {
+    const form = this.registerEquipmentForm.value;
+
+    this.equipmentService
+      .postEquipment(
+        form.name,
+        form.anvisaNumber,
+        form.criticality,
+        form.function,
+        form.model,
+        form.producer,
+        form.importance,
+        form.serialNumber,
+        new Date(),
+        form.patternEquipment,
+        form.sector,
+        1
+      )
+      .subscribe(res => {
+        console.log(res);
+      });
   }
+
+  constructor(private equipmentService: EquipmentService) {}
 }

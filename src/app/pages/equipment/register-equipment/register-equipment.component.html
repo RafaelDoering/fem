@@ -2,7 +2,7 @@
   class="container d-flex align-items-center justify-content-center my-4"
   style="min-height: calc(100vh - 74px)"
 >
-  <mat-card class="col-6">
+  <mat-card class="col-12 col-md-6">
     <h2 class="pt-4 px-4">Cadastrar Equipamento</h2>
     <form class="p-4" [formGroup]="registerEquipmentForm" (ngSubmit)="onSubmit()">
     <mat-form-field class="w-100" appearance="outline">
@@ -33,35 +33,35 @@
     <mat-form-field class="w-100" appearance="outline">
       <mat-label>Função</mat-label>
       <select matNativeControl formControlName="function">
-        <option value=""></option>
+        <option value="diag">Diagnostico</option>
       </select>
     </mat-form-field>
 
     <mat-form-field class="w-100" appearance="outline">
       <mat-label>Criticidade</mat-label>
       <select matNativeControl formControlName="criticality">
-        <option value=""></option>
+        <option value="baixa">Baixa</option>
       </select>
     </mat-form-field>
 
     <mat-form-field class="w-100" appearance="outline">
       <mat-label>Grau de Importância</mat-label>
       <select matNativeControl formControlName="importance">
-        <option value=""></option>
+        <option value="c">C</option>
       </select>
     </mat-form-field>
 
     <mat-form-field class="w-100" appearance="outline">
       <mat-label>Equipamento Padrão</mat-label>
       <select matNativeControl formControlName="patternEquipment">
-        <option value=""></option>
+        <option value="equip1">Equipamento 1</option>
       </select>
     </mat-form-field>
 
     <mat-form-field class="w-100" appearance="outline">
       <mat-label>Setor</mat-label>
       <select matNativeControl formControlName="sector">
-        <option value=""></option>
+        <option value="sector1">Setor 1</option>
       </select>
     </mat-form-field>
 

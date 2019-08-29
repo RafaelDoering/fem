@@ -12,7 +12,7 @@ export interface TableElement {
   serialNumber: string;
   importance: string;
   criticality: string;
-  nextPreventive: Date;
+  nextPreventive: string;
 }
 
 @Component({

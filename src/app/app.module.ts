@@ -27,6 +27,8 @@ import { RegisterEquipmentComponent } from './pages/equipment/register-equipment
 import { ListEquipmentsComponent } from './pages/equipment/list-equipments/list-equipments.component';
 import { PreventiveModalComponent } from './pages/preventive/preventive-modal/preventive-modal.component';
 import { MatNativeDateModule } from '@angular/material/core';
+import { DefectsHistoryComponent } from './pages/history/defects-history/defects-history.component';
+import { ProcedureHistoryComponent } from './pages/history/procedure-history/procedure-history.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { MatNativeDateModule } from '@angular/material/core';
     ServiceOrderComponent,
     RegisterEquipmentComponent,
     ListEquipmentsComponent,
-    PreventiveModalComponent
+    PreventiveModalComponent,
+    DefectsHistoryComponent,
+    ProcedureHistoryComponent
   ],
   imports: [
     BrowserModule,

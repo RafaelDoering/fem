@@ -1,4 +1,4 @@
-<mat-toolbar color="primary" style="height: 74px" class="mat-elevation-z8">
+<mat-toolbar color="primary" style="height: 74px" class="mat-elevation-z8" *ngIf="this.router.url !== '/'">
   <div class="d-flex align-items-center px-4">
     <mat-icon>assignment</mat-icon>
     <strong>F</strong>ast<strong>EM</strong>ag
@@ -24,6 +24,14 @@
     <mat-icon>assessment</mat-icon>
     <small>Ordem de Serviço</small>
   </button>
+  <button mat-button [matMenuTriggerFor]="history" class="px-4">
+    <mat-icon>history</mat-icon>
+    <small>Histórico</small>
+  </button>
+  <mat-menu #history="matMenu">
+    <button mat-menu-item routerLink="/history/procedure">Procedimentos</button>
+    <button mat-menu-item routerLink="/history/defects">Defeitos</button>
+  </mat-menu>
   <button mat-button class="px-4" routerLink="/">
     <mat-icon>exit_to_app</mat-icon>
     <small>Sair</small>

@@ -10,7 +10,7 @@ export interface TableElement {
   equipament: string;
   serialNumber: string;
   sector: string;
-  nextPreventive: Date;
+  nextPreventive: string;
 }
 
 @Component({

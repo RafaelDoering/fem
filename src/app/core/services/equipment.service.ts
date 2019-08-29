@@ -20,6 +20,20 @@ export class EquipmentService {
     );
   }
 
+  public getHistoryDefects(id: number) {
+    return this.httpClient.post(
+      `${environment.backendURL}equipament/findHistDef`,
+      { id: id }
+    );
+  }
+
+  public getHistoryProcedure(id: number) {
+    return this.httpClient.post(
+      `${environment.backendURL}equipament/findHistProc`,
+      { id: id }
+    );
+  }
+
   public getPreventives(id: number) {
     return this.httpClient.post(
       `${environment.backendURL}equipament/findPreventivas`,

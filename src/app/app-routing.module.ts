@@ -7,6 +7,9 @@ import { ListEquipmentsComponent } from './pages/equipment/list-equipments/list-
 import { PreventiveComponent } from './pages/preventive/preventive.component';
 import { DefectsComponent } from './pages/defects/defects.component';
 import { ServiceOrderComponent } from './pages/service-order/service-order.component';
+import { DefectsHistoryComponent } from './pages/history/defects-history/defects-history.component';
+import { ProcedureHistoryComponent } from './pages/history/procedure-history/procedure-history.component';
+
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -14,7 +17,9 @@ const routes: Routes = [
   { path: 'equipment/list', component: ListEquipmentsComponent },
   { path: 'preventive', component: PreventiveComponent },
   { path: 'defects', component: DefectsComponent },
-  { path: 'service-order', component: ServiceOrderComponent }
+  { path: 'service-order', component: ServiceOrderComponent },
+  { path: 'history/defects', component: DefectsHistoryComponent },
+  { path: 'history/procedure', component: ProcedureHistoryComponent }
 ];
 
 @NgModule({

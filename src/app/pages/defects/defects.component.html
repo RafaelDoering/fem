@@ -23,7 +23,7 @@
     <ng-container matColumnDef="dateDefect">
       <th mat-header-cell *matHeaderCellDef>Data do Defeito</th>
       <td mat-cell *matCellDef="let element">
-        {{ element.dateDefect | date: 'short' }}
+        {{ element.dateDefect }}
         <button mat-icon-button>
           <mat-icon>check</mat-icon>
         </button>

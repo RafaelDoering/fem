@@ -7,7 +7,7 @@ export interface TableElement {
   serialNumber: string;
   sector: string;
   defect: string;
-  dateDefect: Date;
+  dateDefect: string;
 }
 
 @Component({
