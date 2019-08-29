@@ -64,10 +64,10 @@ export class EquipmentService {
       producer,
       importance,
       serialNumber,
-      nextPreventive,
+      nextPreventive: `${new Date().getDay()}-${new Date().getMonth()}-${new Date().getFullYear()}`,
       patternEquipament: patternEquipment,
       sector,
-      hospitalId
+      hospitalId: 1
     });
   }
 
