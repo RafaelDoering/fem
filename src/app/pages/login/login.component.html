@@ -4,17 +4,17 @@
 >
   <mat-card class="col-6">
     <h2 class="pt-4 px-4">Entrar</h2>
-    <form class="p-4">
+    <form class="p-4" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <mat-form-field class="w-100" appearance="outline">
         <mat-label>Email</mat-label>
-        <input matInput />
+        <input matInput formControlName="email" />
       </mat-form-field>
 
       <mat-form-field class="w-100" appearance="outline">
         <mat-label>Senha</mat-label>
-        <input matInput />
+        <input matInput formControlName="password" />
       </mat-form-field>
-      <button mat-flat-button color="primary" class="w-100 py-2">Entrar</button>
+      <button mat-flat-button color="primary" type="submit" class="w-100 py-2">Entrar</button>
       <div class="d-flex justify-content-end w-100">
         <button mat-button color="primary" class="mt-4">
           Esqueceu sua senha?

@@ -2,21 +2,19 @@ import { Component } from '@angular/core';
 
 export interface TableElement {
   equipment: string;
-  serialNumber: number;
+  serialNumber: string;
   sector: string;
-  serviceOrder: string;
-  solicitation: string;
-  solicitationDate: Date;
+  os: string;
+  dateOS: Date;
 }
 
 const TABLE_DATA: TableElement[] = [
   {
-    equipment: 'Equipamento',
-    serialNumber: 1,
-    sector: 'Setor',
-    serviceOrder: 'Ordem de Serviço',
-    solicitation: 'Solicitante',
-    solicitationDate: new Date()
+    equipment: 'Esfigmomanometro Aneroide Manual',
+    serialNumber: '3675328',
+    sector: 'UTI Adulta',
+    os: 'Treinamento',
+    dateOS: new Date()
   },
 ];
 
@@ -26,6 +24,6 @@ const TABLE_DATA: TableElement[] = [
   styleUrls: ['./service-order.component.scss']
 })
 export class ServiceOrderComponent {
-  displayedColumns: string[] = ['equipment', 'serialNumber', 'sector', 'serviceOrder', 'solicitation', 'solicitationDate'];
+  displayedColumns: string[] = ['equipment', 'serialNumber', 'sector', 'os', 'dateOS'];
   dataSource = TABLE_DATA;
 }

@@ -1,28 +1,32 @@
-<mat-toolbar color="primary" style="height: 74px">
+<mat-toolbar color="primary" style="height: 74px" class="mat-elevation-z8">
   <div class="d-flex align-items-center px-4">
     <mat-icon>assignment</mat-icon>
     <strong>F</strong>ast<strong>EM</strong>ag
   </div>
   <span class="flex-grow-1"></span>
-  <div class="d-flex flex-column align-items-center px-4" routerLink="/equipment">
+  <button mat-button [matMenuTriggerFor]="equipments" class="px-4">
     <mat-icon>settings_applications</mat-icon>
     <small>Equipamentos</small>
-  </div>
-  <div class="d-flex flex-column align-items-center px-4" routerLink="/preventive">
+  </button>
+  <mat-menu #equipments="matMenu">
+    <button mat-menu-item routerLink="/equipment/register">Registrar</button>
+    <button mat-menu-item routerLink="/equipment/list">Listar</button>
+  </mat-menu>
+  <button mat-button class="px-4" routerLink="/preventive">
     <mat-icon>build</mat-icon>
     <small>Preventivas</small>
-  </div>
-  <div class="d-flex flex-column align-items-center px-4" routerLink="/defects">
+  </button>
+  <button mat-button class="px-4" routerLink="/defects">
     <mat-icon>block</mat-icon>
     <small>Defeitos</small>
-  </div>
-  <div class="d-flex flex-column align-items-center px-4" routerLink="/service-order">
+  </button>
+  <button mat-button class="px-4" routerLink="/service-order">
     <mat-icon>assessment</mat-icon>
     <small>Ordem de Serviço</small>
-  </div>
-  <div class="d-flex flex-column align-items-center px-4" routerLink="/">
+  </button>
+  <button mat-button class="px-4" routerLink="/">
     <mat-icon>exit_to_app</mat-icon>
     <small>Sair</small>
-  </div>
+  </button>
 </mat-toolbar>
 <router-outlet></router-outlet>

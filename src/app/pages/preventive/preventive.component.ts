@@ -1,23 +1,23 @@
 import { Component } from '@angular/core';
 
+import { MatDialog } from '@angular/material/dialog';
+
+import { PreventiveModalComponent } from './preventive-modal/preventive-modal.component';
+
 export interface TableElement {
   equipment: string;
-  serialNumber: number;
+  serialNumber: string;
   sector: string;
-  serviceOrder: string;
-  solicitation: string;
-  solicitationDate: Date;
+  nextPreventive: Date;
 }
 
 const TABLE_DATA: TableElement[] = [
   {
-    equipment: 'Equipamento',
-    serialNumber: 1,
-    sector: 'Setor',
-    serviceOrder: 'Ordem de Serviço',
-    solicitation: 'Solicitante',
-    solicitationDate: new Date()
-  },
+    equipment: 'Esfigmomanometro Aneroide Manual',
+    serialNumber: '3675328',
+    sector: 'UTI Adulta',
+    nextPreventive: new Date()
+  }
 ];
 
 @Component({
@@ -26,6 +26,28 @@ const TABLE_DATA: TableElement[] = [
   styleUrls: ['./preventive.component.scss']
 })
 export class PreventiveComponent {
-  displayedColumns: string[] = ['equipment', 'serialNumber', 'sector', 'serviceOrder', 'solicitation', 'solicitationDate'];
+  displayedColumns: string[] = [
+    'equipment',
+    'serialNumber',
+    'sector',
+    'nextPreventive'
+  ];
   dataSource = TABLE_DATA;
+
+  animal: string;
+  name: string;
+
+  constructor(public dialog: MatDialog) {}
+
+  openDialog(el) {
+    const dialogRef = this.dialog.open(PreventiveModalComponent, {
+      width: '320px',
+      data: { element: el }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
+  }
 }
