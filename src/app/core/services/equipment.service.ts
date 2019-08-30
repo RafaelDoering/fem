@@ -116,6 +116,7 @@ export class EquipmentService {
       nextPreventive,
       patternEquipament: patternEquipment,
       sector,
+      hospitalId: this.authService.user.hospitalId
     });
   }
 
