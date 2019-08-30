@@ -19,7 +19,7 @@ export class DefectsHistoryComponent implements OnInit {
   dataSource;
 
   ngOnInit() {
-    this.equipmentService.getHistoryDefects(1).subscribe((res) => {
+    this.equipmentService.getHistoryDefects().subscribe((res) => {
       this.dataSource = res as any;
     });
   }

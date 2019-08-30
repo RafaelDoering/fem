@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 
 import { EquipmentService } from '@services';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register-equipment',
@@ -19,11 +20,14 @@ export class RegisterEquipmentComponent {
     importance: new FormControl(''),
     serialNumber: new FormControl(''),
     patternEquipment: new FormControl(''),
-    sector: new FormControl('')
+    sector: new FormControl(''),
+    nextPreventive: new FormControl('')
   });
 
   public onSubmit() {
     const form = this.registerEquipmentForm.value;
+    const preventiveDate = new Date(form.nextPreventive);
+    const date = `${preventiveDate.getDate().toString()}-${(preventiveDate.getMonth()+1).toString()}-${preventiveDate.getFullYear().toString()}`
 
     this.equipmentService
       .postEquipment(
@@ -35,15 +39,17 @@ export class RegisterEquipmentComponent {
         form.producer,
         form.importance,
         form.serialNumber,
-        new Date(),
+        date,
         form.patternEquipment,
-        form.sector,
-        1
+        form.sector
       )
       .subscribe(res => {
-        console.log(res);
+        this.router.navigateByUrl('/equipment/list')
       });
   }
 
-  constructor(private equipmentService: EquipmentService) {}
+  constructor(
+    private equipmentService: EquipmentService,
+    private router: Router
+  ) {}
 }

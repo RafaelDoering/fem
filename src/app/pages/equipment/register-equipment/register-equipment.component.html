@@ -4,70 +4,94 @@
 >
   <mat-card class="col-12 col-md-6">
     <h2 class="pt-4 px-4">Cadastrar Equipamento</h2>
-    <form class="p-4" [formGroup]="registerEquipmentForm" (ngSubmit)="onSubmit()">
-    <mat-form-field class="w-100" appearance="outline">
-      <mat-label>Nome</mat-label>
-      <input matInput formControlName="name" />
-    </mat-form-field>
+    <form
+      class="p-4"
+      [formGroup]="registerEquipmentForm"
+      (ngSubmit)="onSubmit()"
+    >
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Nome</mat-label>
+        <input matInput formControlName="name" />
+      </mat-form-field>
 
-    <mat-form-field class="w-100" appearance="outline">
-      <mat-label>Modelo</mat-label>
-      <input matInput formControlName="model" />
-    </mat-form-field>
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Modelo</mat-label>
+        <input matInput formControlName="model" />
+      </mat-form-field>
 
-    <mat-form-field class="w-100" appearance="outline">
-      <mat-label>Fabricante</mat-label>
-      <input matInput formControlName="producer" />
-    </mat-form-field>
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Fabricante</mat-label>
+        <input matInput formControlName="producer" />
+      </mat-form-field>
 
-    <mat-form-field class="w-100" appearance="outline">
-      <mat-label>Número Anvisa</mat-label>
-      <input matInput formControlName="anvisaNumber" />
-    </mat-form-field>
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Número Anvisa</mat-label>
+        <input matInput formControlName="anvisaNumber" />
+      </mat-form-field>
 
-    <mat-form-field class="w-100" appearance="outline">
-      <mat-label>Número de Série</mat-label>
-      <input matInput formControlName="serialNumber" />
-    </mat-form-field>
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Número de Série</mat-label>
+        <input matInput formControlName="serialNumber" />
+      </mat-form-field>
 
-    <mat-form-field class="w-100" appearance="outline">
-      <mat-label>Função</mat-label>
-      <select matNativeControl formControlName="function">
-        <option value="diag">Diagnostico</option>
-      </select>
-    </mat-form-field>
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Função</mat-label>
+        <select matNativeControl formControlName="function">
+          <option value="Suporte a vida">Suporte a vida</option>
+          <option value="Terapia">Terapia</option>
+          <option value="Análise">Análise</option>
+          <option value="Equipamento de apoio">Equipamento de apoio</option>
+        </select>
+      </mat-form-field>
 
-    <mat-form-field class="w-100" appearance="outline">
-      <mat-label>Criticidade</mat-label>
-      <select matNativeControl formControlName="criticality">
-        <option value="baixa">Baixa</option>
-      </select>
-    </mat-form-field>
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Criticidade</mat-label>
+        <select matNativeControl formControlName="criticality">
+          <option value="Baixa">Baixa</option>
+          <option value="Média">Média</option>
+          <option value="Máxima">Máxima</option>
+        </select>
+      </mat-form-field>
 
-    <mat-form-field class="w-100" appearance="outline">
-      <mat-label>Grau de Importância</mat-label>
-      <select matNativeControl formControlName="importance">
-        <option value="c">C</option>
-      </select>
-    </mat-form-field>
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Grau de Importância</mat-label>
+        <select matNativeControl formControlName="importance">
+          <option value="A">A</option>
+          <option value="B">B</option>
+          <option value="C">C</option>
+        </select>
+      </mat-form-field>
 
-    <mat-form-field class="w-100" appearance="outline">
-      <mat-label>Equipamento Padrão</mat-label>
-      <select matNativeControl formControlName="patternEquipment">
-        <option value="equip1">Equipamento 1</option>
-      </select>
-    </mat-form-field>
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Equipamento Padrão</mat-label>
+        <select matNativeControl formControlName="patternEquipment">
+          <option value="Monitor Multiparamétrico"
+            >Monitor Multiparamétrico</option
+          >
+        </select>
+      </mat-form-field>
 
-    <mat-form-field class="w-100" appearance="outline">
-      <mat-label>Setor</mat-label>
-      <select matNativeControl formControlName="sector">
-        <option value="sector1">Setor 1</option>
-      </select>
-    </mat-form-field>
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Setor</mat-label>
+        <select matNativeControl formControlName="sector">
+          <option value="Pronto Socorro">Pronto Socorro</option>
+        </select>
+      </mat-form-field>
 
-    <button mat-flat-button color="primary" class="w-100 py-2" type="submit">
-      Cadastrar
-    </button>
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Próxima Preventiva</mat-label>
+        <input
+          matInput
+          [matDatepicker]="picker"
+          formControlName="nextPreventive"
+        />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <button mat-flat-button color="primary" class="w-100 py-2" type="submit">
+        Cadastrar
+      </button>
     </form>
   </mat-card>
 </div>

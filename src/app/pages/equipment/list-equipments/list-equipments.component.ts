@@ -35,7 +35,7 @@ export class ListEquipmentsComponent {
   dataSource;
 
   ngOnInit() {
-    this.equipmentService.getEquipment(1).subscribe((res) => {
+    this.equipmentService.getEquipment().subscribe((res) => {
       this.dataSource = res as any;
     });
   }

@@ -2,44 +2,94 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { environment } from '@env/environment';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EquipmentService {
-  public getEquipment(id: number) {
+  public getEquipment() {
     return this.httpClient.post(`${environment.backendURL}equipament/find`, {
-      id: id
+      id: this.authService.user.hospitalId
     });
   }
 
-  public getDefects(id: number) {
+  public getDefects() {
     return this.httpClient.post(
       `${environment.backendURL}equipament/findAllDefects`,
-      { id: id }
+      { id: this.authService.user.hospitalId }
     );
   }
 
-  public getHistoryDefects(id: number) {
+  public getServiceOrders() {
+    return this.httpClient.post(
+      `${environment.backendURL}equipament/findOS`,
+      { id: this.authService.user.hospitalId }
+    );
+  }
+
+  public getHistoryDefects() {
     return this.httpClient.post(
       `${environment.backendURL}equipament/findHistDef`,
-      { id: id }
+      { id: this.authService.user.hospitalId }
     );
   }
 
-  public getHistoryProcedure(id: number) {
+  public getHistoryProcedure() {
     return this.httpClient.post(
       `${environment.backendURL}equipament/findHistProc`,
-      { id: id }
+      { id: this.authService.user.hospitalId }
     );
   }
 
-  public getPreventives(id: number) {
+  public getPreventives() {
     return this.httpClient.post(
       `${environment.backendURL}equipament/findPreventivas`,
-      { id: id }
+      { id: this.authService.user.hospitalId }
     );
   }
+
+  public nextPreventive(
+    serialNumber: string,
+    nextPreventive: string
+  ) {
+    return this.httpClient.post(
+      `${environment.backendURL}equipament/update`,
+      { 
+        serialNumber,
+        nextPreventive,
+        id: this.authService.user.hospitalId
+      }
+    );
+  }
+
+  public saveDef(
+    serialNumber: string,
+    defect: string
+  ) {
+    return this.httpClient.post(
+      `${environment.backendURL}equipament/saveHistDef`,
+      { 
+        serialNumber,
+        defect,
+        id: this.authService.user.hospitalId
+      }
+    );
+  }
+
+  public saveProc(
+    serialNumber: string,
+    nameOs: string
+  ) {
+    return this.httpClient.post(
+      `${environment.backendURL}equipament/saveHistProc`,
+      { 
+        serialNumber,
+        nameOs,
+        id: this.authService.user.hospitalId
+      }
+    );
+  } 
 
   public postEquipment(
     name: string,
@@ -50,10 +100,9 @@ export class EquipmentService {
     producer: string,
     importance: string,
     serialNumber: string,
-    nextPreventive: Date,
+    nextPreventive: string,
     patternEquipment: string,
     sector: string,
-    hospitalId: number
   ) {
     return this.httpClient.post(`${environment.backendURL}equipament/new`, {
       name,
@@ -67,9 +116,11 @@ export class EquipmentService {
       nextPreventive,
       patternEquipament: patternEquipment,
       sector,
-      hospitalId
     });
   }
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(
+    private httpClient: HttpClient,
+    private authService: AuthService
+  ) {}
 }

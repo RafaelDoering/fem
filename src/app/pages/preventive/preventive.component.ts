@@ -37,14 +37,14 @@ export class PreventiveComponent {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.animal = result;
+      this.equipmentService.getPreventives().subscribe((res) => {
+        this.dataSource = res as any;
+      });
     });
   }
   
   ngOnInit() {
-    this.equipmentService.getPreventives(1).subscribe((res) => {
-      console.log(res);
+    this.equipmentService.getPreventives().subscribe((res) => {
       this.dataSource = res as any;
     });
   }

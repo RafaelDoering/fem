@@ -26,9 +26,10 @@ import { ServiceOrderComponent } from './pages/service-order/service-order.compo
 import { RegisterEquipmentComponent } from './pages/equipment/register-equipment/register-equipment.component';
 import { ListEquipmentsComponent } from './pages/equipment/list-equipments/list-equipments.component';
 import { PreventiveModalComponent } from './pages/preventive/preventive-modal/preventive-modal.component';
-import { MatNativeDateModule } from '@angular/material/core';
+import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { DefectsHistoryComponent } from './pages/history/defects-history/defects-history.component';
 import { ProcedureHistoryComponent } from './pages/history/procedure-history/procedure-history.component';
+import { ModalErrorComponent } from './pages/login/modal-error/modal-error.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { ProcedureHistoryComponent } from './pages/history/procedure-history/pro
     ListEquipmentsComponent,
     PreventiveModalComponent,
     DefectsHistoryComponent,
-    ProcedureHistoryComponent
+    ProcedureHistoryComponent,
+    ModalErrorComponent
   ],
   imports: [
     BrowserModule,
@@ -62,8 +64,11 @@ import { ProcedureHistoryComponent } from './pages/history/procedure-history/pro
     HttpClientModule,
     BrowserAnimationsModule
   ],
-  providers: [MatDatepickerModule],
+  providers: [
+    MatDatepickerModule,
+    {provide: MAT_DATE_LOCALE, useValue: 'pt-BR'},
+  ],
   bootstrap: [AppComponent],
-  entryComponents: [PreventiveModalComponent]
+  entryComponents: [PreventiveModalComponent, ModalErrorComponent]
 })
 export class AppModule {}

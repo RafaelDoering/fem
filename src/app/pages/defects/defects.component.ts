@@ -19,8 +19,22 @@ export class DefectsComponent implements OnInit {
   displayedColumns: string[] = ['equipament', 'serialNumber', 'sector', 'defect', 'dateDefect'];
   dataSource;
 
+  save(el) {
+    console.log(el);
+    this.equipmentService.saveDef(el.serialNumber, el.defect).subscribe((res) => {
+      this.equipmentService.getDefects().subscribe((res) => {
+        this.dataSource = [];
+        for(const item of res as any) {
+          if (item.serialNumber !== el.serialNumber) {
+            this.dataSource.push(item);
+          }
+        }
+      });
+    });
+  }
+
   ngOnInit() {
-    this.equipmentService.getDefects(1).subscribe((res) => {
+    this.equipmentService.getDefects().subscribe((res) => {
       this.dataSource = res as any;
     });
   }
