@@ -19,7 +19,7 @@ export class ProcedureHistoryComponent implements OnInit {
   dataSource;
 
   ngOnInit() {
-    this.equipmentService.getHistoryDefects().subscribe((res) => {
+    this.equipmentService.getHistoryProcedure().subscribe((res) => {
       this.dataSource = res as any;
     });
   }
